@@ -10,8 +10,7 @@ WORKDIR $APP_HOME
 
 ADD Gemfile* $APP_HOME/
 RUN gem update --system
-RUN gem update
-RUN gem clean
+RUN gem update bundler
 RUN bundle install
 
 ADD . $APP_HOME
