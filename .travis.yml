@@ -1,10 +1,10 @@
 language: ruby
-
 services:
 - docker
-
 before_install:
 - docker-compose -f docker-compose.test.yml build
-
 script:
 - docker-compose -f docker-compose.test.yml run tests bin/docker-tests
+env:
+  global:
+    secure: UPID1dl9EIHHOl499W8jfj+ZUI8804nrXBntOpy9s7s4icnp+lcQgCyMP11ucXWJ7zaYELnCBqOfi4MdwFGEacJFTeiKBv/E2AygmlQuT53ShoI8hKXtk0zuDuILd41liwyjhm7yahzBUx6Um+MdbLdYYIVbkieaicWvT/i5GeY=
