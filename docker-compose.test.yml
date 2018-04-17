@@ -4,9 +4,9 @@ services:
   postgresql:
     image: postgres:9.4
     environment:
-    - POSTGRES_USER=shuttle
-    - POSTGRES_PASSWORD=
-    - POSTGRES_DB=shuttle_test
+      - POSTGRES_USER=shuttle
+      - POSTGRES_PASSWORD=
+      - POSTGRES_DB=shuttle_test
 
   redis:
     image: redis
@@ -17,20 +17,20 @@ services:
   tests:
     build: .
     links: &links
-    - postgresql
-    - postgresql:postgresql.shuttle.local
-    - redis
-    - redis:redis.shuttle.local
-    - elasticsearch
-    - elasticsearch:elasticsearch.shuttle.local
+      - postgresql
+      - postgresql:postgresql.shuttle.local
+      - redis
+      - redis:redis.shuttle.local
+      - elasticsearch
+      - elasticsearch:elasticsearch.shuttle.local
     environment: &environment
-    - BUNDLE_GEMS__CONTRIBSYS__COM
-    - RAILS_ENV=test
-    - RACK_ENV=test
-    - SHUTTLE_DB_HOST=postgresql.shuttle.local
-    - SHUTTLE_REDIS_HOST=redis.shuttle.local
-    - 'SHUTTLE_ES_URL=elasticsearch.shuttle.local:9200'
-    - SHUTTLE_MAIL_HOST=mail.shuttle.local
+      - BUNDLE_GEMS__CONTRIBSYS__COM
+      - RAILS_ENV=test
+      - RACK_ENV=test
+      - SHUTTLE_DB_HOST=postgresql.shuttle.local
+      - SHUTTLE_REDIS_HOST=redis.shuttle.local
+      - 'SHUTTLE_ES_URL=elasticsearch.shuttle.local:9200'
+      - SHUTTLE_MAIL_HOST=mail.shuttle.local
 
 #  worker:
 #    build: .
