@@ -1,4 +1,3 @@
-language: ruby
 services:
   - docker
 before_install:
