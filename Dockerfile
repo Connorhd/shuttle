@@ -10,9 +10,9 @@ RUN apt-get update -qq \
        postgresql-client cmake tidy git \
     && apt-get clean
 
-ADD Gemfile* $APP_HOME/
+COPY Gemfile* $APP_HOME/
 RUN gem update --system
 RUN gem install bundler --version '>= 1.16.1' --conservative
 RUN bundle install
 
-ADD . $APP_HOME
+COPY . $APP_HOME
