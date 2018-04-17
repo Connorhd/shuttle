@@ -11,7 +11,7 @@ WORKDIR $APP_HOME
 ADD Gemfile* $APP_HOME/
 RUN gem update --system
 RUN gem install bundler --version '>= 1.16.1' --conservative
-RUN echo "env var is ${BUNDLE_GEMS__CONTRIBSYS__COM}"
+RUN bundle config gems.contribsys.com $BUNDLE_GEMS__CONTRIBSYS__COM
 RUN bundle install
 
 ADD . $APP_HOME

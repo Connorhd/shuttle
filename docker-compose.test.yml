@@ -24,13 +24,13 @@ services:
     - elasticsearch
     - elasticsearch:elasticsearch.shuttle.local
     environment: &environment
+    - BUNDLE_GEMS__CONTRIBSYS__COM
     - RAILS_ENV=test
     - RACK_ENV=test
     - SHUTTLE_DB_HOST=postgresql.shuttle.local
     - SHUTTLE_REDIS_HOST=redis.shuttle.local
     - 'SHUTTLE_ES_URL=elasticsearch.shuttle.local:9200'
     - SHUTTLE_MAIL_HOST=mail.shuttle.local
-    - BUNDLE_GEMS__CONTRIBSYS__COM
 
 #  worker:
 #    build: .
