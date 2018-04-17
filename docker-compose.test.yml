@@ -29,7 +29,7 @@ services:
       - RACK_ENV=test
       - SHUTTLE_DB_HOST=postgresql.shuttle.local
       - SHUTTLE_REDIS_HOST=redis.shuttle.local
-      - 'SHUTTLE_ES_URL=elasticsearch.shuttle.local:9200'
+      - SHUTTLE_ES_URL='elasticsearch.shuttle.local:9200'
       - SHUTTLE_MAIL_HOST=mail.shuttle.local
 
 #  worker:
