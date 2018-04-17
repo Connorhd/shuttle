@@ -15,7 +15,10 @@ services:
     image: quay.io/trackmaven/elasticsearch:1.7
 
   tests:
-    build: .
+    build:
+      context: .
+      args:
+        - BUNDLE_GEMS__CONTRIBSYS__COM
     links: &links
       - postgresql
       - postgresql:postgresql.shuttle.local
@@ -24,12 +27,11 @@ services:
       - elasticsearch
       - elasticsearch:elasticsearch.shuttle.local
     environment: &environment
-      - BUNDLE_GEMS__CONTRIBSYS__COM
       - RAILS_ENV=test
       - RACK_ENV=test
       - SHUTTLE_DB_HOST=postgresql.shuttle.local
       - SHUTTLE_REDIS_HOST=redis.shuttle.local
-      - SHUTTLE_ES_URL='elasticsearch.shuttle.local:9200'
+      - SHUTTLE_ES_URL=elasticsearch.shuttle.local:9200
       - SHUTTLE_MAIL_HOST=mail.shuttle.local
 
 #  worker:
