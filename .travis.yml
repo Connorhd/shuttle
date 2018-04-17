@@ -2,7 +2,8 @@ language: ruby
 services:
 - docker
 before_install:
-- docker-compose -f docker-compose.test.yml -e BUNDLE_GEMS__CONTRIBSYS__COM build
+- echo "env var is ${BUNDLE_GEMS__CONTRIBSYS__COM}"
+- docker-compose -f docker-compose.test.yml build
 script:
 - docker-compose -f docker-compose.test.yml run tests bin/docker-tests
 env:
