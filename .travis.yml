@@ -6,6 +6,3 @@ before_install:
 - docker-compose -f docker-compose.test.yml build
 script:
 - docker-compose -f docker-compose.test.yml run tests bin/docker-tests
-env:
-  global:
-  - secure: cahhj6+80jIYXHLhDZiQ6s++JRO3tFmV+X/U+/4jaq4Pi1AOciab/jJyX1j5DJlSQsS2Ne1L/p1gv6KR6kd+B9d37q70FfGr9uUVighBpGQUeq8iA+CAf6WpPjxft96GobplKpvRsxbYxsrtEqVIEvYAl6ixI8uwrgGhmNqFCzM=
