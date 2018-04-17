@@ -2,7 +2,7 @@ language: ruby
 services:
 - docker
 before_install:
-- docker-compose -f docker-compose.test.yml build
+- docker-compose -f docker-compose.test.yml -e BUNDLE_GEMS__CONTRIBSYS__COM build
 script:
 - docker-compose -f docker-compose.test.yml run tests bin/docker-tests
 env:
