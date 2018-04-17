@@ -1,8 +1,22 @@
-sudo: required
+sudo: false
+addons:
+  apt:
+    packages:
+      - cmake
+      - libarchive-dev
+      - tidy
+  postgresql: '9.3'
 services:
-  - docker
+  - redis
+  - elasticsearch
+language: ruby
+rvm:
+  - 2.3.1
+cache: bundler
 before_install:
-  - docker-compose --version
-  - docker-compose -f docker-compose.test.yml build
+  - psql -c 'create database travis_ci_test;' -U postgres
+  - cp config/database.travis.yml config/database.yml
+  - git --git-dir=spec/fixtures/repository.git init --bare
 script:
-  - docker-compose -f docker-compose.test.yml run tests bin/docker-tests
+  - bundle exec rake db:test:prepare
+  - bundle exec rspec
