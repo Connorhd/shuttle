@@ -14,10 +14,15 @@ language: ruby
 rvm:
   - 2.3.1
 cache: bundler
+env:
+  - RAILS_ENV=test
 before_install:
   - psql -c 'create database travis_ci_test;' -U postgres
   - cp config/database.travis.yml config/database.yml
   - git --git-dir=spec/fixtures/repository.git init --bare
 script:
   - bundle exec rake db:test:prepare
+  - bundle exec rake environment elasticsearch:import:model FORCE=y CLASS=Commit
+  - bundle exec rake environment elasticsearch:import:model FORCE=y CLASS=Key
+  - bundle exec rake environment elasticsearch:import:model FORCE=y CLASS=Translation
   - bundle exec rspec
